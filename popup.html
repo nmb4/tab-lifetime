@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Close inactive Chrome tabs after a configurable timeout."
+    />
+    <title>Tab Lifetime</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body data-state="loading">
+    <header class="app-header">
+      <img class="app-icon" src="icons/icon128.png" alt="" width="36" height="36" />
+      <div class="app-heading">
+        <h1>Tab Lifetime</h1>
+        <p>Close stale tabs automatically.</p>
+      </div>
+      <label class="switch" title="Pause or resume auto close">
+        <span class="sr-only">Auto close inactive tabs</span>
+        <input id="enabled" type="checkbox" role="switch" />
+        <span class="switch-track" aria-hidden="true"></span>
+      </label>
+    </header>
+
+    <main>
+      <section class="summary" aria-labelledby="summary-title">
+        <div class="status-line">
+          <h2 id="summary-title">Checking your tabs</h2>
+        </div>
+        <p id="policy-summary" class="policy-summary">Loading the current policy.</p>
+
+        <dl class="metrics" aria-live="polite">
+          <div>
+            <dt>Due now</dt>
+            <dd id="due-count">—</dd>
+          </div>
+          <div>
+            <dt>Tracked</dt>
+            <dd id="tracked-count">—</dd>
+          </div>
+          <div>
+            <dt>Closed</dt>
+            <dd id="closed-count">—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="settings" aria-labelledby="settings-title">
+        <div class="section-heading">
+          <h2 id="settings-title">Auto close policy</h2>
+          <span id="policy-badge" class="policy-badge">On</span>
+        </div>
+
+        <div class="field-group">
+          <label for="duration-value">Close an inactive tab after</label>
+          <div class="duration-control">
+            <input
+              id="duration-value"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              max="43200"
+              step="1"
+              aria-describedby="duration-help duration-error"
+            />
+            <select id="duration-unit" aria-label="Duration unit">
+              <option value="minutes">minutes</option>
+              <option value="hours">hours</option>
+              <option value="days">days</option>
+            </select>
+          </div>
+          <p id="duration-help" class="field-help">Anywhere from 1 minute to 30 days.</p>
+          <p id="duration-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <div class="protection-note">
+          <span class="shield" aria-hidden="true"></span>
+          <p>Active, audible, and pinned tabs are always protected.</p>
+        </div>
+      </section>
+
+      <button id="clean-now" class="primary-button" type="button" disabled>
+        Close stale tabs now
+      </button>
+      <div id="notice" class="sr-only" role="status" aria-live="polite"></div>
+    </main>
+
+    <noscript>This extension needs JavaScript to manage tab timers.</noscript>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

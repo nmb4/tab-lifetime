@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Tab Lifetime">
+  <rect x="6" y="6" width="116" height="116" rx="28" fill="#2a2729"/>
+  <path d="M31 91V42h51l15 15v34H31Z" fill="none" stroke="#f6f3f4" stroke-width="8" stroke-linejoin="round"/>
+  <circle cx="88" cy="89" r="23" fill="#a8959d" stroke="#f6f3f4" stroke-width="4"/>
+  <path d="M88 78v12l8 5" fill="none" stroke="#faf7f8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
